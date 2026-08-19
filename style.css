@@ -1,0 +1,366 @@
+/* ==========================================================================
+   Gujarat Mobile — Killa-Pardi
+   Design tokens + custom styles (Tailwind handles utility layout)
+   ========================================================================== */
+
+:root{
+  /* Palette — drawn from the store's mandala/lion mark:
+     saffron marigold, deep maroon petal, warm gold, warm near-black, warm paper */
+  --gm-paper:      #FBF6EE;   /* warm paper background, not pure white */
+  --gm-paper-2:    #F3EADA;   /* slightly deeper paper for alt sections */
+  --gm-ink:        #201510;   /* warm near-black for text */
+  --gm-ink-soft:   #55463C;   /* secondary text */
+  --gm-saffron:    #E17A1F;   /* primary — from logo orange */
+  --gm-saffron-dk: #C4630F;
+  --gm-maroon:     #7A1A3C;   /* secondary — from logo magenta/maroon petal */
+  --gm-maroon-dk:  #5C1430;
+  --gm-gold:       #C7962E;   /* accent gold */
+  --gm-night:      #201108;   /* deep warm charcoal for header/footer */
+  --gm-night-2:    #2C160D;
+  --gm-line:       #E7DAC4;   /* hairline borders on paper */
+  --gm-success:    #2F7A4E;
+
+  --gm-shadow-sm: 0 1px 2px rgba(32,21,16,0.06), 0 1px 1px rgba(32,21,16,0.04);
+  --gm-shadow-md: 0 8px 24px -8px rgba(32,21,16,0.18);
+  --gm-shadow-lg: 0 20px 48px -12px rgba(32,21,16,0.28);
+
+  --gm-radius: 14px;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  *, *::before, *::after{
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body{
+  background-color: var(--gm-paper);
+  color: var(--gm-ink);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display{
+  font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+}
+
+/* Visible, accessible focus states everywhere */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible{
+  outline: 2.5px solid var(--gm-saffron-dk);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---- Signature: rangoli sunburst dividers ---- */
+.gm-sunburst{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.gm-sunburst::before,
+.gm-sunburst::after{
+  content: "";
+  height: 1px;
+  width: 42px;
+  background: linear-gradient(90deg, transparent, var(--gm-gold));
+}
+.gm-sunburst::after{
+  background: linear-gradient(90deg, var(--gm-gold), transparent);
+}
+.gm-sunburst-dot{
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--gm-saffron);
+  box-shadow: 0 0 0 3px rgba(225,122,31,0.16);
+}
+
+/* ---- Eyebrow labels ---- */
+.gm-eyebrow{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--gm-maroon);
+}
+
+/* ---- Header ---- */
+.gm-header{
+  background: var(--gm-night);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.gm-nav-link{
+  position: relative;
+  color: rgba(251,246,238,0.82);
+  transition: color .18s ease;
+}
+.gm-nav-link:hover,
+.gm-nav-link.is-active{
+  color: #FBF6EE;
+}
+.gm-nav-link::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:-6px;
+  height:2px;
+  background: var(--gm-saffron);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .2s ease;
+}
+.gm-nav-link:hover::after,
+.gm-nav-link.is-active::after{
+  transform: scaleX(1);
+}
+
+/* ---- Buttons ---- */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.925rem;
+  border-radius: 999px;
+  padding: 0.8rem 1.5rem;
+  transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease, color .15s ease;
+  white-space: nowrap;
+}
+.btn:active{ transform: translateY(1px); }
+
+.btn-primary{
+  background: var(--gm-saffron);
+  color: #fff;
+  box-shadow: var(--gm-shadow-sm);
+}
+.btn-primary:hover{
+  background: var(--gm-saffron-dk);
+  box-shadow: var(--gm-shadow-md);
+}
+
+.btn-outline{
+  background: transparent;
+  color: var(--gm-paper);
+  border: 1.5px solid rgba(251,246,238,0.55);
+}
+.btn-outline:hover{
+  background: rgba(251,246,238,0.1);
+  border-color: var(--gm-paper);
+}
+
+.btn-dark-outline{
+  background: transparent;
+  color: var(--gm-ink);
+  border: 1.5px solid var(--gm-ink);
+}
+.btn-dark-outline:hover{
+  background: var(--gm-ink);
+  color: var(--gm-paper);
+}
+
+.btn-whatsapp{
+  background: #25A257;
+  color: #fff;
+}
+.btn-whatsapp:hover{
+  background: #1E8A49;
+}
+
+.btn-sm{
+  padding: 0.55rem 1.05rem;
+  font-size: 0.82rem;
+}
+
+/* ---- Cards ---- */
+.gm-card{
+  background: #fff;
+  border: 1px solid var(--gm-line);
+  border-radius: var(--gm-radius);
+  box-shadow: var(--gm-shadow-sm);
+  transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+}
+.gm-card:hover{
+  box-shadow: var(--gm-shadow-md);
+  transform: translateY(-3px);
+  border-color: #E9C9A0;
+}
+
+.gm-card-top-accent{
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--gm-saffron), var(--gm-maroon));
+  border-top-left-radius: var(--gm-radius);
+  border-top-right-radius: var(--gm-radius);
+}
+
+/* Sample/demo ribbon on product & offer cards */
+.gm-badge-sample{
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--gm-maroon);
+  padding: 0.28rem 0.6rem;
+  border-radius: 999px;
+}
+
+.gm-badge-outline{
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--gm-ink-soft);
+  background: var(--gm-paper-2);
+  border: 1px solid var(--gm-line);
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+}
+
+/* ---- Product image placeholder tile ---- */
+.gm-img-tile{
+  background:
+    radial-gradient(circle at 30% 20%, rgba(225,122,31,0.12), transparent 55%),
+    radial-gradient(circle at 75% 75%, rgba(122,26,60,0.10), transparent 55%),
+    var(--gm-paper-2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position: relative;
+  overflow: hidden;
+}
+.gm-img-tile svg{
+  color: var(--gm-ink-soft);
+  opacity: 0.55;
+}
+
+/* ---- Chip / filter buttons ---- */
+.gm-chip{
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--gm-line);
+  background: #fff;
+  color: var(--gm-ink-soft);
+  transition: all .15s ease;
+  white-space: nowrap;
+}
+.gm-chip:hover{
+  border-color: var(--gm-saffron);
+  color: var(--gm-saffron-dk);
+}
+.gm-chip.is-active{
+  background: var(--gm-ink);
+  border-color: var(--gm-ink);
+  color: #fff;
+}
+
+/* ---- Section backdrops ---- */
+.gm-section-alt{
+  background: var(--gm-paper-2);
+}
+.gm-section-dark{
+  background: var(--gm-night);
+  color: var(--gm-paper);
+}
+
+/* ---- Hero mandala backdrop (subtle, CSS-only) ---- */
+.gm-hero{
+  background:
+    radial-gradient(ellipse 90% 60% at 85% -10%, rgba(225,122,31,0.16), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 5% 110%, rgba(122,26,60,0.14), transparent 60%),
+    var(--gm-night);
+  position: relative;
+  overflow: hidden;
+}
+.gm-hero-ring{
+  position:absolute;
+  border-radius:50%;
+  border: 1px solid rgba(199,150,46,0.28);
+  pointer-events: none;
+}
+
+/* ---- Demo banner ---- */
+.gm-demo-banner{
+  background: var(--gm-maroon);
+  color: #fff;
+}
+
+/* ---- Marquee-free scroll reveal ---- */
+.gm-reveal{
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.gm-reveal.is-visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- Mobile nav drawer ---- */
+#mobileNav{
+  transition: transform .28s ease, opacity .2s ease;
+}
+#mobileNav.is-open{
+  transform: translateX(0);
+}
+#mobileNav.is-closed{
+  transform: translateX(100%);
+}
+
+/* ---- Demo toast ---- */
+#demoToast.is-visible{
+  opacity: 1;
+}
+
+/* ---- Back to top ---- */
+#backToTop{
+  transition: opacity .2s ease, transform .2s ease;
+}
+#backToTop.is-hidden{
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+}
+
+/* ---- Utility: line clamp for consistent card copy heights ---- */
+.gm-clamp-2{
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ---- Store info rows ---- */
+.gm-info-row{
+  border-bottom: 1px dashed var(--gm-line);
+}
+.gm-info-row:last-child{
+  border-bottom: none;
+}
+
+/* ---- Map placeholder ---- */
+.gm-map-placeholder{
+  background:
+    repeating-linear-gradient(45deg, rgba(32,21,16,0.035) 0 2px, transparent 2px 14px),
+    var(--gm-paper-2);
+  border: 1px dashed var(--gm-line);
+}

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gujarat Mobile — Killa-Pardi | Smartphones, Accessories &amp; Offers (Demo)</title>
+<meta name="description" content="Concept showroom website for Gujarat Mobile, Killa-Pardi. Browse sample smartphones and accessories, and find store contact details. This is a private demo, not the official website.">
+<meta name="robots" content="noindex, nofollow">
+
+<!-- Open Graph placeholders — update once verified for public use -->
+<meta property="og:title" content="Gujarat Mobile — Killa-Pardi (Demo)">
+<meta property="og:description" content="Concept showroom website for Gujarat Mobile, Killa-Pardi. Private demo — not an official website.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/images/logo.jpeg">
+<meta property="og:locale" content="en_IN">
+
+<!-- Favicon placeholder -->
+<link rel="icon" href="assets/images/logo.jpeg" type="image/jpeg">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS via CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="css/style.css">
+
+<!-- LocalBusiness structured data TEMPLATE.
+     Do NOT publish until every value below is verified and DEMO_MODE is false. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobilePhoneStore",
+  "name": "Gujarat Mobile - Killa-Pardi",
+  "description": "Mobile phone and accessories showroom in Killa-Pardi, Gujarat.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "VERIFY_ADDRESS",
+    "addressLocality": "Killa-Pardi",
+    "addressRegion": "Gujarat",
+    "addressCountry": "IN"
+  },
+  "telephone": "VERIFY_PHONE",
+  "url": "VERIFY_WEBSITE_URL"
+}
+</script>
+</head>
+<body class="antialiased">
+
+<!-- =========================================================
+     DEMO NOTICE BANNER
+========================================================= -->
+<div id="demoBanner" data-demo-only class="gm-demo-banner text-center text-xs sm:text-sm py-2 px-4 font-medium">
+  <i data-lucide="info" class="inline w-3.5 h-3.5 -mt-0.5 mr-1"></i>
+  DEMO WEBSITE — Concept for Gujarat Mobile, Killa-Pardi. Not an official website.
+</div>
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+<header id="siteHeader" class="gm-header sticky top-0 z-40 transition-shadow">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 sm:h-[4.5rem]">
+
+      <!-- Logo / name -->
+      <a href="#home" class="flex items-center gap-2.5 shrink-0" aria-label="Gujarat Mobile Killa-Pardi — home">
+        <img src="assets/images/logo.jpeg" alt="Gujarat Mobile logo" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full object-cover border border-white/10">
+        <span class="leading-tight">
+          <span class="block font-display font-bold text-[var(--gm-paper)] text-[0.95rem] sm:text-base tracking-tight">Gujarat Mobile</span>
+          <span class="block text-[0.65rem] sm:text-xs text-[var(--gm-gold)] font-medium tracking-wide">Killa-Pardi</span>
+        </span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden lg:flex items-center gap-8 font-display text-sm font-medium" aria-label="Primary">
+        <a href="#home" class="gm-nav-link is-active">Home</a>
+        <a href="#smartphones" class="gm-nav-link">Smartphones</a>
+        <a href="#offers" class="gm-nav-link">Offers</a>
+        <a href="#accessories" class="gm-nav-link">Accessories</a>
+        <a href="#emi" class="gm-nav-link">EMI</a>
+        <a href="#about" class="gm-nav-link">About</a>
+        <a href="#location" class="gm-nav-link">Location</a>
+      </nav>
+
+      <!-- Desktop CTA -->
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="#location" data-role="call-btn" class="btn btn-outline btn-sm" aria-label="Call the store">
+          <i data-lucide="phone" class="w-4 h-4"></i> Call
+        </a>
+        <a href="#" data-role="whatsapp-btn" class="btn btn-whatsapp btn-sm" aria-label="Send a WhatsApp enquiry">
+          <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp
+        </a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button id="navToggle" type="button" class="lg:hidden p-2 -mr-2 text-[var(--gm-paper)]" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile nav backdrop -->
+<div id="navBackdrop" class="hidden fixed inset-0 bg-black/50 z-40"></div>
+
+<!-- Mobile nav drawer -->
+<nav id="mobileNav" class="is-closed fixed top-0 right-0 h-full w-[82%] max-w-xs bg-[var(--gm-night)] z-50 shadow-2xl flex flex-col" aria-label="Mobile">
+  <div class="flex items-center justify-between px-5 h-16 border-b border-white/10">
+    <span class="font-display font-semibold text-[var(--gm-paper)]">Menu</span>
+    <button id="navClose" type="button" class="p-2 text-[var(--gm-paper)]" aria-label="Close menu">
+      <i data-lucide="x" class="w-6 h-6"></i>
+    </button>
+  </div>
+  <div class="flex flex-col px-5 py-6 gap-1 font-display text-[1.05rem]">
+    <a href="#home" class="gm-nav-link py-3 border-b border-white/5">Home</a>
+    <a href="#smartphones" class="gm-nav-link py-3 border-b border-white/5">Smartphones</a>
+    <a href="#offers" class="gm-nav-link py-3 border-b border-white/5">Offers</a>
+    <a href="#accessories" class="gm-nav-link py-3 border-b border-white/5">Accessories</a>
+    <a href="#emi" class="gm-nav-link py-3 border-b border-white/5">EMI</a>
+    <a href="#about" class="gm-nav-link py-3 border-b border-white/5">About</a>
+    <a href="#location" class="gm-nav-link py-3">Location</a>
+  </div>
+  <div class="mt-auto px-5 pb-8 flex flex-col gap-3">
+    <a href="#" data-role="whatsapp-btn" class="btn btn-whatsapp w-full"><i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp Enquiry</a>
+    <a href="#location" data-role="call-btn" class="btn btn-outline w-full"><i data-lucide="phone" class="w-4 h-4"></i> Call Store</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- =========================================================
+       HERO
+  ========================================================= -->
+  <section id="home" class="gm-hero pt-16 pb-20 sm:pt-24 sm:pb-28 px-4 sm:px-6 lg:px-8">
+    <div class="gm-hero-ring w-[420px] h-[420px] -top-40 -right-32 hidden sm:block"></div>
+    <div class="gm-hero-ring w-[280px] h-[280px] -bottom-32 -left-24 hidden sm:block"></div>
+
+    <div class="max-w-7xl mx-auto relative">
+      <div class="max-w-2xl">
+        <span class="gm-eyebrow inline-flex items-center gap-2 mb-5" style="color:var(--gm-gold)">
+          <span class="gm-sunburst-dot"></span> Gujarat Mobile · Killa-Pardi
+        </span>
+        <h1 class="font-display font-extrabold text-[2.1rem] leading-[1.15] sm:text-5xl sm:leading-[1.12] text-[var(--gm-paper)] mb-5">
+          Your Next Smartphone<br class="hidden sm:block"> Starts Here
+        </h1>
+        <p class="text-[var(--gm-paper)]/80 text-base sm:text-lg leading-relaxed mb-8 max-w-xl">
+          Explore smartphones, accessories and offers at Gujarat Mobile, Killa-Pardi. Visit the store or send an enquiry to check current products and pricing.
+        </p>
+        <div class="flex flex-wrap gap-3 sm:gap-4">
+          <a href="#smartphones" class="btn btn-primary">
+            Explore Smartphones <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <a href="#location" class="btn btn-outline">
+            Contact Store
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SMARTPHONE SHOWROOM
+  ========================================================= -->
+  <section id="smartphones" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-4">
+        <div class="gm-sunburst mb-4"><span class="gm-sunburst-dot"></span></div>
+        <span class="gm-eyebrow">Smartphone Showroom</span>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl mt-2 mb-3">Browse Available Smartphones</h2>
+        <p class="text-[var(--gm-ink-soft)] text-sm sm:text-base">
+          The models below are sample/demo listings used to preview the catalogue layout. Real Killa-Pardi inventory will replace these once confirmed by the store.
+        </p>
+      </div>
+
+      <!-- Search + Filters -->
+      <div class="mt-10 mb-8 flex flex-col gap-4">
+        <div class="relative max-w-md mx-auto w-full">
+          <i data-lucide="search" class="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-[var(--gm-ink-soft)]"></i>
+          <input id="productSearch" type="search" placeholder="Search sample smartphones…" aria-label="Search smartphones"
+            class="w-full pl-10 pr-4 py-2.5 rounded-full border border-[var(--gm-line)] bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[var(--gm-saffron)]">
+        </div>
+        <div id="filterChips" class="flex flex-wrap justify-center gap-2" role="group" aria-label="Filter smartphones by category"></div>
+      </div>
+
+      <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"></div>
+
+      <p id="productEmptyState" class="hidden text-center text-[var(--gm-ink-soft)] py-12">
+        No sample products match your search. Try a different keyword or filter.
+      </p>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       OFFERS
+  ========================================================= -->
+  <section id="offers" class="gm-section-alt py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <div class="gm-sunburst mb-4"><span class="gm-sunburst-dot"></span></div>
+        <span class="gm-eyebrow">Latest Offers</span>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl mt-2 mb-3">Current Offers &amp; Deals</h2>
+        <p class="text-[var(--gm-ink-soft)] text-sm sm:text-base">
+          Latest offers will be updated after verification. The cards below show how real exchange, bank and festival offers will appear.
+        </p>
+      </div>
+      <div id="offerGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"></div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       ACCESSORIES
+  ========================================================= -->
+  <section id="accessories" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <div class="gm-sunburst mb-4"><span class="gm-sunburst-dot"></span></div>
+        <span class="gm-eyebrow">Accessories</span>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl mt-2 mb-3">Accessory Categories</h2>
+        <p class="text-[var(--gm-ink-soft)] text-sm sm:text-base">
+          These are suggested categories only. Actual accessory availability at Gujarat Mobile, Killa-Pardi will be confirmed by the store.
+        </p>
+      </div>
+      <div id="accessoryGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5"></div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       EMI / FINANCE
+  ========================================================= -->
+  <section id="emi" class="gm-section-dark py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="gm-sunburst mb-4"><span class="gm-sunburst-dot"></span></div>
+      <span class="gm-eyebrow" style="color:var(--gm-gold)">EMI &amp; Finance</span>
+      <h2 class="font-display font-bold text-2xl sm:text-3xl mt-2 mb-4 text-[var(--gm-paper)]">Looking for flexible payment options?</h2>
+      <p class="text-[var(--gm-paper)]/75 text-sm sm:text-base leading-relaxed mb-8 max-w-2xl mx-auto">
+        Ask the Gujarat Mobile Killa-Pardi team about available EMI and finance options. Specific finance partners, interest rates and eligibility will be shared in-store once confirmed.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="#" data-role="whatsapp-btn" class="btn btn-whatsapp">
+          <i data-lucide="message-circle" class="w-4 h-4"></i> Ask About EMI on WhatsApp
+        </a>
+        <a href="#location" data-role="call-btn" class="btn btn-outline">
+          <i data-lucide="phone" class="w-4 h-4"></i> Call the Store
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       ABOUT
+  ========================================================= -->
+  <section id="about" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <div class="gm-sunburst mb-4"><span class="gm-sunburst-dot"></span></div>
+        <span class="gm-eyebrow">About the Store</span>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl mt-2 mb-3">About Gujarat Mobile — Killa-Pardi</h2>
+      </div>
+
+      <div class="gm-card p-6 sm:p-10 text-center">
+        <p class="text-[var(--gm-ink-soft)] leading-relaxed mb-8 max-w-2xl mx-auto">
+          Store information will be updated after verification. This section is structured so the owner can add a real store introduction, list of services, available brands and store history.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 text-left">
+          <div class="p-5 rounded-xl" style="background:var(--gm-paper-2)">
+            <i data-lucide="store" class="w-5 h-5 mb-3" style="color:var(--gm-maroon)"></i>
+            <h3 class="font-display font-semibold text-sm mb-1.5">Store Introduction</h3>
+            <p class="text-xs text-[var(--gm-ink-soft)]">To be added by the owner.</p>
+          </div>
+          <div class="p-5 rounded-xl" style="background:var(--gm-paper-2)">
+            <i data-lucide="wrench" class="w-5 h-5 mb-3" style="color:var(--gm-maroon)"></i>
+            <h3 class="font-display font-semibold text-sm mb-1.5">Services Offered</h3>
+            <p class="text-xs text-[var(--gm-ink-soft)]">Sales, and any repair/service details — to be confirmed.</p>
+          </div>
+          <div class="p-5 rounded-xl" style="background:var(--gm-paper-2)">
+            <i data-lucide="badge-check" class="w-5 h-5 mb-3" style="color:var(--gm-maroon)"></i>
+            <h3 class="font-display font-semibold text-sm mb-1.5">Brands Available</h3>
+            <p class="text-xs text-[var(--gm-ink-soft)]">To be confirmed by the store.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       REVIEWS
+  ========================================================= -->
+  <section id="reviews" class="gm-section-alt py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="gm-sunburst mb-4"><span class="gm-sunburst-dot"></span></div>
+      <span class="gm-eyebrow">Customer Reviews</span>
+      <h2 class="font-display font-bold text-2xl sm:text-3xl mt-2 mb-4">What Customers Say</h2>
+      <div class="gm-card p-8 sm:p-10">
+        <i data-lucide="quote" class="w-7 h-7 mx-auto mb-4" style="color:var(--gm-gold)"></i>
+        <p class="text-[var(--gm-ink-soft)]">Customer reviews will be added after verification.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       LOCATION
+  ========================================================= -->
+  <section id="location" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <div class="gm-sunburst mb-4"><span class="gm-sunburst-dot"></span></div>
+        <span class="gm-eyebrow">Visit Us</span>
+        <h2 class="font-display font-bold text-2xl sm:text-3xl mt-2 mb-3">Gujarat Mobile — Killa-Pardi Store</h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
+
+        <!-- Address card -->
+        <div class="gm-card p-6 sm:p-8">
+          <div class="flex items-start gap-4 gm-info-row pb-4 mb-4">
+            <i data-lucide="store" class="w-5 h-5 mt-0.5 shrink-0" style="color:var(--gm-maroon)"></i>
+            <div>
+              <p class="font-display font-semibold text-sm mb-1">Store</p>
+              <p class="text-[var(--gm-ink-soft)] text-sm">Gujarat Mobile — Killa-Pardi</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 gm-info-row pb-4 mb-4">
+            <i data-lucide="map-pin" class="w-5 h-5 mt-0.5 shrink-0" style="color:var(--gm-maroon)"></i>
+            <div>
+              <p class="font-display font-semibold text-sm mb-1">Address</p>
+              <p class="text-[var(--gm-ink-soft)] text-sm" data-field="address">VERIFY_ADDRESS</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 gm-info-row pb-4 mb-4">
+            <i data-lucide="phone" class="w-5 h-5 mt-0.5 shrink-0" style="color:var(--gm-maroon)"></i>
+            <div>
+              <p class="font-display font-semibold text-sm mb-1">Phone</p>
+              <p class="text-[var(--gm-ink-soft)] text-sm" data-field="phone">VERIFY_PHONE</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 gm-info-row pb-4 mb-4">
+            <i data-lucide="message-circle" class="w-5 h-5 mt-0.5 shrink-0" style="color:var(--gm-maroon)"></i>
+            <div>
+              <p class="font-display font-semibold text-sm mb-1">WhatsApp</p>
+              <p class="text-[var(--gm-ink-soft)] text-sm" data-field="whatsapp">VERIFY_WHATSAPP</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <i data-lucide="clock" class="w-5 h-5 mt-0.5 shrink-0" style="color:var(--gm-maroon)"></i>
+            <div>
+              <p class="font-display font-semibold text-sm mb-1">Store Hours</p>
+              <p class="text-[var(--gm-ink-soft)] text-sm" data-field="hours">VERIFY_STORE_HOURS</p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-3 mt-7">
+            <a href="#location" data-role="directions-btn" class="btn btn-primary btn-sm">
+              <i data-lucide="navigation" class="w-4 h-4"></i> Get Directions
+            </a>
+            <a href="#location" data-role="call-btn" class="btn btn-dark-outline btn-sm">
+              <i data-lucide="phone" class="w-4 h-4"></i> Call Store
+            </a>
+            <a href="#" data-role="whatsapp-btn" class="btn btn-whatsapp btn-sm">
+              <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- Map placeholder -->
+        <div class="gm-map-placeholder rounded-2xl min-h-[280px] lg:min-h-full flex flex-col items-center justify-center text-center p-8">
+          <i data-lucide="map" class="w-9 h-9 mb-3" style="color:var(--gm-ink-soft)"></i>
+          <p class="font-display font-semibold text-sm mb-1">Google Maps Preview</p>
+          <p class="text-xs text-[var(--gm-ink-soft)] max-w-xs">
+            An embedded map will appear here once a verified Google Maps link for the Killa-Pardi store is added to <code>business.mapsUrl</code>.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       CONTACT CTA
+  ========================================================= -->
+  <section id="contact" class="gm-section-dark py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="gm-sunburst mb-4"><span class="gm-sunburst-dot"></span></div>
+      <h2 class="font-display font-bold text-2xl sm:text-3xl mb-4 text-[var(--gm-paper)]">Need help choosing your next phone?</h2>
+      <p class="text-[var(--gm-paper)]/75 text-sm sm:text-base leading-relaxed mb-8 max-w-xl mx-auto">
+        Contact Gujarat Mobile — Killa-Pardi for current products, prices and offers.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="#location" data-role="call-btn" class="btn btn-primary">
+          <i data-lucide="phone" class="w-4 h-4"></i> Call Store
+        </a>
+        <a href="#" data-role="whatsapp-btn" class="btn btn-whatsapp">
+          <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp
+        </a>
+        <a href="#location" data-role="directions-btn" class="btn btn-outline">
+          <i data-lucide="navigation" class="w-4 h-4"></i> Get Directions
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+<footer class="bg-[var(--gm-night-2)] text-[var(--gm-paper)]/80 pt-14 pb-8 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b border-white/10">
+
+      <div>
+        <div class="flex items-center gap-2.5 mb-4">
+          <img src="assets/images/logo.jpeg" alt="Gujarat Mobile logo" class="w-9 h-9 rounded-full object-cover">
+          <span class="font-display font-bold text-[var(--gm-paper)]">Gujarat Mobile</span>
+        </div>
+        <p class="text-sm">Killa-Pardi, Gujarat</p>
+        <p class="text-xs mt-3 text-[var(--gm-paper)]/50">Smartphone &amp; accessories showroom concept.</p>
+      </div>
+
+      <div>
+        <h3 class="font-display font-semibold text-[var(--gm-paper)] text-sm mb-4">Navigation</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#smartphones" class="hover:text-[var(--gm-paper)]">Smartphones</a></li>
+          <li><a href="#offers" class="hover:text-[var(--gm-paper)]">Offers</a></li>
+          <li><a href="#accessories" class="hover:text-[var(--gm-paper)]">Accessories</a></li>
+          <li><a href="#emi" class="hover:text-[var(--gm-paper)]">EMI</a></li>
+          <li><a href="#about" class="hover:text-[var(--gm-paper)]">About</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-display font-semibold text-[var(--gm-paper)] text-sm mb-4">Contact</h3>
+        <ul class="space-y-2 text-sm">
+          <li class="flex items-center gap-2"><i data-lucide="phone" class="w-3.5 h-3.5"></i><span data-field="phone">VERIFY_PHONE</span></li>
+          <li class="flex items-center gap-2"><i data-lucide="message-circle" class="w-3.5 h-3.5"></i><span data-field="whatsapp">VERIFY_WHATSAPP</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-display font-semibold text-[var(--gm-paper)] text-sm mb-4">Location</h3>
+        <p class="text-sm" data-field="address">VERIFY_ADDRESS</p>
+        <a href="#location" data-role="directions-btn" class="inline-flex items-center gap-1.5 text-sm mt-3 text-[var(--gm-gold)] hover:underline">
+          Get Directions <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[var(--gm-paper)]/50">
+      <p data-demo-only>DEMO WEBSITE — Concept for Gujarat Mobile, Killa-Pardi. Not an official website.</p>
+      <p>&copy; <span id="yearNow"></span> Gujarat Mobile, Killa-Pardi. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button id="backToTop" class="is-hidden fixed bottom-6 right-4 sm:right-6 z-30 w-11 h-11 rounded-full flex items-center justify-center shadow-lg" style="background:var(--gm-saffron)" aria-label="Back to top">
+  <i data-lucide="arrow-up" class="w-5 h-5 text-white"></i>
+</button>
+
+<!-- Demo toast -->
+<div id="demoToast" class="hidden fixed bottom-24 left-1/2 -translate-x-1/2 z-50 max-w-[90%] text-center text-sm bg-[var(--gm-ink)] text-white px-4 py-3 rounded-xl shadow-lg opacity-0 transition-opacity" role="status" aria-live="polite"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
